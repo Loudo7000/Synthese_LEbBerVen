@@ -24,9 +24,4 @@ public class TestGenerator : MonoBehaviour
 
         Debug.Log(_nbCoup);
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        
-    }
 }
