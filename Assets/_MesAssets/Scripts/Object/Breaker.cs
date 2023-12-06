@@ -7,23 +7,18 @@ public class Breaker : MonoBehaviour
 {
 
     [SerializeField] private GameObject[] _light = default;
-    [SerializeField] private GameObject _mainSwitch = default;
+    [SerializeField] private GameObject _mainSwitchOn = default;
+    [SerializeField] private GameObject _mainSwitchOff = default;
     private bool _mainSwitchState = false;
-
-    private quaternion _mainSwitchOnPos = default;
-    private quaternion _mainSwitchOffPos = default;
 
     private void Start()
     {
-
-
+        _mainSwitchOn.gameObject.SetActive(false);
 
         foreach (var light in _light)
         {
             light.gameObject.SetActive(false);
         }
-
-        _mainSwitch.transform.rotation = _mainSwitchOffPos;
 
     }
 
@@ -39,7 +34,9 @@ public class Breaker : MonoBehaviour
                 light.gameObject.SetActive(true);
             }
 
-            _mainSwitch.transform.rotation = _mainSwitchOnPos;
+
+            _mainSwitchOn.gameObject.SetActive(true);
+            _mainSwitchOff.gameObject.SetActive(false);
 
         }
         else
@@ -49,7 +46,9 @@ public class Breaker : MonoBehaviour
                 light.gameObject.SetActive(false);
             }
 
-            _mainSwitch.transform.rotation = _mainSwitchOffPos;
+            _mainSwitchOff.gameObject.SetActive(true);
+            _mainSwitchOn.gameObject.SetActive(false);
+
 
         }
     }
