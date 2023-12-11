@@ -6,14 +6,29 @@ using UnityEngine.Experimental.GlobalIllumination;
 public class PorteCabane : MonoBehaviour
 {
 
-    [SerializeField] GameObject _porte = default;
-    private bool _isOpen = false;
+    [SerializeField] private GameObject _openDoor = default;
+    [SerializeField] private GameObject _closeDoor = default;
+    private bool _doorState = false;
 
-    public void switchLight()
+    private void Start()
     {
-        _isOpen = !_isOpen;
+        _openDoor.gameObject.SetActive(false);
+    }
 
-        if (_isOpen)
-        _porte.gameObject.SetActive(_porte);
+
+    public void door()
+    {
+        _doorState = !_doorState;
+
+        if (_doorState)
+        {
+            _openDoor.gameObject.SetActive(true);
+            _closeDoor.gameObject.SetActive(false);
+        }
+        else
+        {
+            _closeDoor.gameObject.SetActive(true);
+            _openDoor.gameObject.SetActive(false);
+        }
     }
 }
