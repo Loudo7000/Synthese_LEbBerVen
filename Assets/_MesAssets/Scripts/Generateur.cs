@@ -11,9 +11,12 @@ public class Generateur : MonoBehaviour
     [SerializeField] private int _nbCoupsWrench;
 
     private int _nbCoup;
-    private bool _sortie = false;
     private int _qteGas;
+    private bool _sortie = false;
     private UIGenerateur _etat;
+
+    public int NbCoup { get => _nbCoup; set => _nbCoup = value; }
+    public int QteGas { get => _qteGas; set => _qteGas = value; }
 
     private void Start()
     {
