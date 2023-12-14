@@ -38,7 +38,6 @@ public class UIGenerateur : MonoBehaviour
 
     public void AllumerGenerateur()
     {
-        if()
         _btnGenerateur.GetComponent<Image>().color = Color.green;
     }
 }

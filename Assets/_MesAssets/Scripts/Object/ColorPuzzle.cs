@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,18 +9,21 @@ using UnityEngine.UI;
 public class ColorPuzzle : MonoBehaviour
 {
 
-    [SerializeField] GameObject[] _button;
-    [SerializeField] GameObject[] _image;
+    [SerializeField] private GameObject[] _button;
+    [SerializeField] private GameObject[] _image;
+    [SerializeField] private TMP_Text _puzzleColorTitle = default;
 
     private Color _color0 = Color.red;
     private Color _color1 = Color.blue;
     private Color _color2 = Color.yellow;
     private Color _color3 = Color.green;
 
-    private int[]  _intRandom = new int[4];
-    private int[]  _int = new int[4];
+    private int[]  _intRandomTab = new int[4];
+    private int[]  _intTab = new int[4];
+    private int _nbBtnPush = 0;
 
-    private 
+    private bool _puzzleColorEnable = false;
+
 
     void Start()
     {
@@ -30,7 +35,7 @@ public class ColorPuzzle : MonoBehaviour
         for(int i = 0; i < 4; i++)
         {
             int ran = Random.Range(0, 4);
-            _intRandom[i] = ran;
+            _intRandomTab[i] = ran;
             switch (ran)
             {
                 case 0:
@@ -47,17 +52,64 @@ public class ColorPuzzle : MonoBehaviour
                     break;
 
             }
-
-
-            Debug.Log(_intRandom[i]);
         }
 
 
     }
 
-    public void ButtonTransitionColors()
+    public void redBtn()
     {
 
+        _intTab[_nbBtnPush] = 0;
 
+        CheckArray();
+
+    }
+    public void blueBtn()
+    {
+
+        _intTab[_nbBtnPush] = 1;
+
+        CheckArray();
+
+    }
+    public void yellowBtn()
+    {
+
+        _intTab[_nbBtnPush] = 2;
+
+        CheckArray();
+
+    }
+    public void greenBtn()
+    {
+
+        _intTab[_nbBtnPush] = 3;
+
+        CheckArray();
+
+    }
+
+    public void resetPuzzle()
+    {
+        _nbBtnPush = 0;
+
+    }
+
+    private void CheckArray()
+    {
+        if (!_puzzleColorEnable)
+        {
+            _nbBtnPush++;
+            if (_nbBtnPush == 4)
+            {
+                if (_intRandomTab.SequenceEqual(_intTab))
+                {
+                    _puzzleColorEnable = true;
+                    _puzzleColorTitle.text = "Combinaison Valide !";
+                }
+                _nbBtnPush = 0;
+            }
+        }
     }
 }

@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class IndiceColor : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] GameObject _plate = default;
+
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.gameObject.tag == "Wrench")
+        {
+            _plate.SetActive(false);
+        }
     }
 }
