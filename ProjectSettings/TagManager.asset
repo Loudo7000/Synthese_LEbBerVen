@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wrench
   - Gas
+  - GearHolder
   layers:
   - Default
   - TransparentFX
