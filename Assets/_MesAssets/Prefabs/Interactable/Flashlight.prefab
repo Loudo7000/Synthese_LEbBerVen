@@ -338,6 +338,11 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 12.98
       objectReference: {fileID: 0}
+    - target: {fileID: 3248151061257833437, guid: 4470122ba5266514483ef3040785ba1e,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5688502373924001199, guid: 4470122ba5266514483ef3040785ba1e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -401,12 +406,12 @@ PrefabInstance:
     - target: {fileID: 7872113462485133011, guid: 4470122ba5266514483ef3040785ba1e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.778
       objectReference: {fileID: 0}
     - target: {fileID: 7872113462485133011, guid: 4470122ba5266514483ef3040785ba1e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.056
       objectReference: {fileID: 0}
     - target: {fileID: 7872113462485133011, guid: 4470122ba5266514483ef3040785ba1e,
         type: 3}
@@ -442,6 +447,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039975287518977468, guid: 4470122ba5266514483ef3040785ba1e,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7689302632225194438, guid: 4470122ba5266514483ef3040785ba1e, type: 3}
