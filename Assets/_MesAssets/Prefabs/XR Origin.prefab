@@ -952,6 +952,8 @@ GameObject:
   - component: {fileID: 7442302282230137959}
   - component: {fileID: 7442302282230137962}
   - component: {fileID: 1468872173149254202}
+  - component: {fileID: 361741323832029324}
+  - component: {fileID: 1111967305043034379}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -1132,6 +1134,36 @@ MonoBehaviour:
   _head: {fileID: 7442302283415074980}
   _leftHand: {fileID: 7442302282524578309}
   _rightHand: {fileID: 7442302282020280643}
+--- !u!136 &361741323832029324
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442302282230137957}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1111967305043034379
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442302282230137957}
+  serializedVersion: 2
+  m_Mass: 1000
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &7442302282524578306
 GameObject:
   m_ObjectHideFlags: 0
@@ -2126,6 +2158,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8531257273584568039, guid: ff9bdcea7319e38419a9f628fb80bae7,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 951099334
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff9bdcea7319e38419a9f628fb80bae7, type: 3}
