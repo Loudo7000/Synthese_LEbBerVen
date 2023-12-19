@@ -61,7 +61,7 @@ public class Generateur : MonoBehaviour
             yield return new WaitForSeconds(2);
             AugmenterQteGas();
         }
-        else if (_qteGas == 20)
+        else if (_qteGas >= 20)
         {
             _etat.ChangerEtatGas();
         }
