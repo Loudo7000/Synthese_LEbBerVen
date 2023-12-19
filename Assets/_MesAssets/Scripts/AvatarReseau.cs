@@ -5,34 +5,27 @@ using Unity.Netcode;
 
 public class AvatarReseau : NetworkBehaviour
 {
-    [SerializeField] private Transform _rootAvatar = default;
-    [SerializeField] private Transform _teteAvatar = default;
-    [SerializeField] private Transform _mainGAvatar = default;
-    [SerializeField] private Transform _mainDAvatar = default;
-
-    private PositionsKitVR _positionKitVR;
-
-    void Start()
-    {
-        _positionKitVR = FindObjectOfType<PositionsKitVR>();
-    }
+    // Attributs qui servent à contenir les positions de mon avatar
+    [SerializeField] private Transform _rootAvatar = default;  // XR Origin
+    [SerializeField] private Transform _headAvatar = default;  // Main Camera
+    [SerializeField] private Transform _leftHandAvatar = default;  // LeftHand
+    [SerializeField] private Transform _rightHandAvatar = default;  // RightHand
 
     private void Update()
     {
         if (IsOwner)
         {
-            _rootAvatar.position = _positionKitVR.Root.position;
-            _rootAvatar.rotation = _positionKitVR.Root.rotation;
+            _rootAvatar.position = PositionsVRRig.Instance.Root.position;
+            _rootAvatar.rotation = PositionsVRRig.Instance.Root.rotation;
 
-            _teteAvatar.position = _positionKitVR.Tete.position;
-            _teteAvatar.rotation = _positionKitVR.Tete.rotation;
+            _headAvatar.position = PositionsVRRig.Instance.Head.position;
+            _headAvatar.rotation = PositionsVRRig.Instance.Head.rotation;
 
-            _mainGAvatar.position = _positionKitVR.MainG.position;
-            _mainGAvatar.rotation = _positionKitVR.MainG.rotation;
+            _leftHandAvatar.position = PositionsVRRig.Instance.LeftHand.position;
+            _leftHandAvatar.rotation = PositionsVRRig.Instance.LeftHand.rotation;
 
-            _mainDAvatar.position = _positionKitVR.MainD.position;
-            _mainDAvatar.rotation = _positionKitVR.MainD.rotation;
+            _rightHandAvatar.position = PositionsVRRig.Instance.RightHand.position;
+            _rightHandAvatar.rotation = PositionsVRRig.Instance.RightHand.rotation;
         }
-
     }
 }

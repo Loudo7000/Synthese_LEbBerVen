@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Netcode.Components;
 using UnityEngine;
+using Unity.Netcode.Components;
 
-public class NetworkTransformClient : NetworkTransform
+public class NetworkAnimatorClient : NetworkAnimator
 {
     protected override bool OnIsServerAuthoritative()
     {
