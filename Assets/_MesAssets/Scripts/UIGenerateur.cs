@@ -13,6 +13,9 @@ public class UIGenerateur : MonoBehaviour
     [SerializeField] private Slider _sliderGas = default;
 
     private Generateur _generateur;
+    private bool _allumer = false;
+
+    public bool Allumer { get => _allumer; set => _allumer = value; }
 
     private void Start()
     {
@@ -38,6 +41,10 @@ public class UIGenerateur : MonoBehaviour
 
     public void AllumerGenerateur()
     {
-        _btnGenerateur.GetComponent<Image>().color = Color.green;
+        if(_generateur.NbCoup == 3 && _generateur.QteGas >= 20)
+        {
+            _btnGenerateur.GetComponent<Image>().color = Color.green;
+            _allumer = true;
+        }
     }
 }
