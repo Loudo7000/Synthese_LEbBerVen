@@ -11,12 +11,14 @@ public class AvatarReseau : NetworkBehaviour
     [SerializeField] private Transform _leftHandAvatar = default;  // LeftHand
     [SerializeField] private Transform _rightHandAvatar = default;  // RightHand
 
+    public Transform RootAvatar { get => _rootAvatar; set => _rootAvatar = value; }
+
     private void Update()
     {
         if (IsOwner)
         {
-            _rootAvatar.position = PositionsVRRig.Instance.Root.position;
-            _rootAvatar.rotation = PositionsVRRig.Instance.Root.rotation;
+            RootAvatar.position = PositionsVRRig.Instance.Root.position;
+            RootAvatar.rotation = PositionsVRRig.Instance.Root.rotation;
 
             _headAvatar.position = PositionsVRRig.Instance.Head.position;
             _headAvatar.rotation = PositionsVRRig.Instance.Head.rotation;
