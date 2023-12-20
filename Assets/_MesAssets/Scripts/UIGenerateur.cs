@@ -35,13 +35,17 @@ public class UIGenerateur : MonoBehaviour
 
     public void AugmenterGas(int quantite)
     {
-        _txtGas.text = "Essence : " + quantite + " / 20L";
-        _sliderGas.value = quantite;
+        if(quantite <= 20)
+        {
+            _txtGas.text = "Essence : " + quantite + " / 20L";
+            _sliderGas.value = quantite;
+        }
+        
     }
 
     public void AllumerGenerateur()
     {
-        if(_generateur.NbCoup == 3 && _generateur.QteGas >= 20)
+        if(_generateur.NbCoup >= 3 && _generateur.QteGas >= 20)
         {
             _btnGenerateur.GetComponent<Image>().color = Color.green;
             _allumer = true;

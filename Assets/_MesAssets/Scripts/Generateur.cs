@@ -50,7 +50,7 @@ public class Generateur : MonoBehaviour
         if (other.tag == ("Gas"))
         {
             _sortie = true;
-            StopCoroutine(CompteurGasCoroutine());
+            StopAllCoroutines();
         }
     }
 
@@ -71,7 +71,7 @@ public class Generateur : MonoBehaviour
     {
         if (_sortie)
         {
-            StopCoroutine(CompteurGasCoroutine());
+            StopAllCoroutines();
         }
         else
         {
