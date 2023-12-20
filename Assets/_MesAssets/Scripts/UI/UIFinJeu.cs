@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using TMPro;
 
-public class UIEndgames : MonoBehaviour
+public class UIFinJeu : MonoBehaviour
 {
     [SerializeField] private TMP_Text _TempsPartie;
     [SerializeField] private TMP_Text _MeilleurTemps;
@@ -23,8 +23,12 @@ public class UIEndgames : MonoBehaviour
         _minute = (int)_temps / 60;
         _seconde = (int)_temps % 60;
         _MeilleurTemps.text = "Meilleur temps : " + _minute.ToString("00") + ":" + _seconde.ToString("00");
-        
+
     }
 
-    
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }
