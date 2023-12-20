@@ -10,12 +10,9 @@ public class PorteHangar : MonoBehaviour
     [SerializeField] private GameObject _knobOn = default;
     [SerializeField] private GameObject _knobOff = default;
     private bool _knobState = false;
-    private UIGenerateur _generateur;
 
     private void Start()
     {
-        _generateur = FindObjectOfType<UIGenerateur>();
-
         _knobOn.gameObject.SetActive(false);
 
         foreach (var door in _openDoor)
@@ -28,47 +25,43 @@ public class PorteHangar : MonoBehaviour
 
     public void knobSwitch()
     {
-        if (_generateur.Allumer)
+        _knobState = !_knobState;
+
+        if (_knobState)
         {
-            _knobState = !_knobState;
-
-            if (_knobState)
+            foreach (var door in _openDoor)
             {
-                foreach (var door in _openDoor)
-                {
-                    door.gameObject.SetActive(true);
-                }
-
-                foreach (var door in _closeDoor)
-                {
-                    door.gameObject.SetActive(false);
-                }
-
-
-                _knobOn.gameObject.SetActive(true);
-                _knobOff.gameObject.SetActive(false);
-
+                door.gameObject.SetActive(true);
             }
-            else
+
+            foreach (var door in _closeDoor)
             {
-
-                foreach (var door in _openDoor)
-                {
-                    door.gameObject.SetActive(false);
-                }
-
-                foreach (var door in _closeDoor)
-                {
-                    door.gameObject.SetActive(true);
-                }
-
-                _knobOn.gameObject.SetActive(false);
-                _knobOff.gameObject.SetActive(true);
-
-
+                door.gameObject.SetActive(false);
             }
+
+
+            _knobOn.gameObject.SetActive(true);
+            _knobOff.gameObject.SetActive(false);
+
         }
-        
+        else
+        {
+
+            foreach (var door in _openDoor)
+            {
+                door.gameObject.SetActive(false);
+            }
+
+            foreach (var door in _closeDoor)
+            {
+                door.gameObject.SetActive(true);
+            }
+
+            _knobOn.gameObject.SetActive(false);
+            _knobOff.gameObject.SetActive(true);
+
+
+        }
     }
 
 }
