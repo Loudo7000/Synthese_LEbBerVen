@@ -9,6 +9,9 @@ public class Generateur : MonoBehaviour
 {
 
     [SerializeField] private int _nbCoupsWrench;
+    [SerializeField] private AudioSource _sonWrench;
+    [SerializeField] private AudioSource _sonGas;
+
 
     private int _nbCoup;
     private int _qteGas;
@@ -27,6 +30,7 @@ public class Generateur : MonoBehaviour
         if (collision.collider.CompareTag("Wrench"))
         {
             _nbCoup++;
+            _sonWrench.Play();
         }
 
         if (_nbCoup == _nbCoupsWrench)
@@ -39,6 +43,11 @@ public class Generateur : MonoBehaviour
     {
         if(other.tag == ("Gas"))
         {
+            if (_qteGas < 20)
+            {
+                _sonGas.Play();
+            }
+
             _sortie = false;
             StartCoroutine(CompteurGasCoroutine());
         }
@@ -49,6 +58,7 @@ public class Generateur : MonoBehaviour
     {
         if (other.tag == ("Gas"))
         {
+            _sonGas.Stop();
             _sortie = true;
             StopAllCoroutines();
         }
@@ -72,6 +82,7 @@ public class Generateur : MonoBehaviour
         if (_sortie)
         {
             StopAllCoroutines();
+            _sonGas.Stop();
         }
         else
         {

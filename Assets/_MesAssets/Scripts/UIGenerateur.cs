@@ -11,6 +11,8 @@ public class UIGenerateur : MonoBehaviour
     [SerializeField] private TMP_Text _txtGas = default;
     [SerializeField] private GameObject _btnGenerateur = default;
     [SerializeField] private Slider _sliderGas = default;
+    [SerializeField] private AudioSource _sonGenerateur;
+
 
     private Generateur _generateur;
     private bool _allumer = false;
@@ -24,7 +26,7 @@ public class UIGenerateur : MonoBehaviour
 
     public void ChangerEtatWrench()
     {
-        _txtGenerateur.text = "État : Réparer";
+        _txtGenerateur.text = "ï¿½tat : Rï¿½parer";
         _txtGenerateur.color = Color.green;
     }
 
@@ -48,6 +50,7 @@ public class UIGenerateur : MonoBehaviour
         {
             _btnGenerateur.GetComponent<Image>().color = Color.green;
             _allumer = true;
+            _sonGenerateur.Play();
         }
     }
 }
