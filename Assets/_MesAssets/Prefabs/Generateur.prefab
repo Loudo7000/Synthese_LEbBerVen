@@ -126,6 +126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nbCoupsWrench: 3
+  _sonWrench: {fileID: 9140235039918214587, guid: 5ace6768e138bfb438222f7ffbb0cf93,
+    type: 3}
+  _sonGas: {fileID: 2405323049800724378, guid: ebc4a570029eb024a91c0600941c9458, type: 3}
 --- !u!54 &3682180747336019514
 Rigidbody:
   m_ObjectHideFlags: 0
