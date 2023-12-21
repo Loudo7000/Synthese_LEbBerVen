@@ -24,6 +24,7 @@ public class ColorPuzzle : MonoBehaviour
 
     private bool _puzzleColorEnable = false;
 
+    public bool PuzzleColorEnable { get => _puzzleColorEnable; set => _puzzleColorEnable = value; }
 
     void Start()
     {
@@ -98,14 +99,14 @@ public class ColorPuzzle : MonoBehaviour
 
     private void CheckArray()
     {
-        if (!_puzzleColorEnable)
+        if (!PuzzleColorEnable)
         {
             _nbBtnPush++;
             if (_nbBtnPush == 4)
             {
                 if (_intRandomTab.SequenceEqual(_intTab))
                 {
-                    _puzzleColorEnable = true;
+                    PuzzleColorEnable = true;
                     _puzzleColorTitle.text = "Combinaison Valide !";
                 }
                 _nbBtnPush = 0;

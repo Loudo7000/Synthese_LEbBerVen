@@ -14,7 +14,6 @@ public class GearPuzzle : MonoBehaviour
     public void OnSocket()
     {
         _compteur++;
-        Debug.Log("rat :" + _compteur);
 
         if (_compteur == _nbGear)
         {
@@ -26,7 +25,6 @@ public class GearPuzzle : MonoBehaviour
     public void OffSocket()
     {
         _compteur--;
-        Debug.Log("rat :" + _compteur);
 
         if (_compteur < _nbGear)
         {
