@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
-public class UIGenerateur : MonoBehaviour
+public class UIGenerateur : NetworkBehaviour
 {
     [SerializeField] private TMP_Text _txtGenerateur = default;
     [SerializeField] private TMP_Text _txtGas = default;
@@ -13,41 +15,51 @@ public class UIGenerateur : MonoBehaviour
     [SerializeField] private Slider _sliderGas = default;
 
     private Generateur _generateur;
-    private bool _allumer = false;
+    private NetworkVariable<bool> _allumer = new NetworkVariable<bool>(false);
 
-    public bool Allumer { get => _allumer; set => _allumer = value; }
+    public bool Allumer { get => _allumer.Value; }
 
     private void Start()
     {
         _generateur = FindObjectOfType<Generateur>();
     }
 
-    public void ChangerEtatWrench()
+    [ClientRpc]
+    public void ChangerEtatWrenchClientRpc()
     {
         _txtGenerateur.text = "État : Réparer";
         _txtGenerateur.color = Color.green;
     }
 
-    public void ChangerEtatGas()
+    [ClientRpc]
+    public void ChangerEtatGasClientRpc()
     {
         _txtGas.color = Color.green;
     }
 
-    public void AugmenterGas(int quantite)
+    [ClientRpc]
+    public void AugmenterGasClientRpc(int quantite)
     {
-        if(quantite <= 20)
+        if (quantite <= 20)
         {
             _txtGas.text = "Essence : " + quantite + " / 20L";
             _sliderGas.value = quantite;
         }
     }
 
-    public void AllumerGenerateur()
+    [ServerRpc(RequireOwnership =false)]
+    public void AllumerGenerateurServerRpc()
     {
-        if(_generateur.NbCoup >= 3 && _generateur.QteGas >= 20)
+        AllumerGenerateurClientRpc();
+    }
+
+    [ClientRpc]
+    private void AllumerGenerateurClientRpc()
+    {
+        if (_generateur.NbCoup >= 3 && _generateur.QteGas >= 20)
         {
             _btnGenerateur.GetComponent<Image>().color = Color.green;
-            _allumer = true;
+            _allumer.Value = true;
         }
     }
 }

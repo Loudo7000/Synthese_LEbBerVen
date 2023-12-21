@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PorteHangar : MonoBehaviour
+public class PorteHangar : NetworkBehaviour
 {
 
     [SerializeField] private GameObject[] _openDoor = default;
@@ -25,8 +26,14 @@ public class PorteHangar : MonoBehaviour
 
     }
 
+    [ServerRpc(RequireOwnership =false)]
+    public void knobSwitchServerRpc()
+    {
+        knobSwitchClientRpc();
+    }
 
-    public void knobSwitch()
+    [ClientRpc]
+    private void knobSwitchClientRpc()
     {
         if (_generateurUI.Allumer)
         {
@@ -69,5 +76,4 @@ public class PorteHangar : MonoBehaviour
             }
         }
     }
-
 }

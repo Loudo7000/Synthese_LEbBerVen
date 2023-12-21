@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Breaker : MonoBehaviour
+public class Breaker : NetworkBehaviour
 {
 
     [SerializeField] private GameObject[] _light = default;
@@ -25,8 +26,14 @@ public class Breaker : MonoBehaviour
 
     }
 
+    [ServerRpc(RequireOwnership =false)]
+    public void mainSwitchServerRpc()
+    {
+        mainSwitchClientRpc();
+    }
 
-    public void mainSwitch()
+    [ClientRpc]
+    private void mainSwitchClientRpc()
     {
         if (_generateurUI.Allumer)
         {
@@ -58,6 +65,4 @@ public class Breaker : MonoBehaviour
             }
         }
     }
-
-
 }
