@@ -13,7 +13,7 @@ public class Spawner : NetworkBehaviour  // change la classe hérité
     // Update is called once per frame
     void Update()
     {
-        if(timer > spawnTime || timer == 0f)
+        if(timer > spawnTime)
         {
             // Si je ne suis pas le serveur je resort du update car seulement le serveur
             // instancie les zombies et gère le timer

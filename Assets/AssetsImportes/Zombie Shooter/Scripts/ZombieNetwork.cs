@@ -75,7 +75,6 @@ public class ZombieNetwork : NetworkBehaviour  //change l'héritage pour le beha
             {
                 agent.speed = agent.speed + 1;
                 timer = 0f;
-                Debug.Log("speed UP");
             }
             timer += Time.deltaTime;
 
