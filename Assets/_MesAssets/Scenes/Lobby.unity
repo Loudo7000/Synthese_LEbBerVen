@@ -976,15 +976,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bienvenue dans mourrir en VR. \nLe but du jeu est r\xE9soudre les 5 enigmes.
-    \n\n- generateur : Il doit etre reparer avec la clef a molette et remplie d'essence
-    afin de pouvoir retablir l'electricite et acceder au fonction du disjoncteur.\n\n-Disjoncteur
-    : Permet d'allumer les lumieres et d'ouvrir differentes portes inacessible au
-    depart.\n\n- Engrenages :  Vous devez trouver 3 engrenages afin de les inserer
-    dans une boite dissimule dans la carte.\n\n- Code de couleurs : Vous devez entrer
-    un code de 4 couleurs dans le bon ordre.\n\nVous aurez a votre dispositions plusieurs
-    outils. Dont une clef a molette, un bidon d'essence et une lampe de poche.\n\nLa
-    lumiere vous guidera."
+  m_text: "Bienvenue dans mourir en VR. \r\nLe but du jeu est de r\xE9soudre les
+    5 \xE9nigmes. \r\n\r\n- Generateur : Vous devez le remettre en fonction a l'aide
+    de different outils.\n\r\n-Disjoncteur : Permet d'allumer les lumieres et d'ouvrir
+    differentes portes inaccessibles au depart.\n\r\n- Engrenages :  Vous devez trouver
+    3 engrenages afin de les ins\xE9rer dans une boite dissimule dans la carte. 
+    \n\r\n- Code de couleurs : Vous devez entrer un code de 4 couleurs dans le bon
+    ordre sur l'ordinateur.\nVous devez trouver plusieurs outils pour vous aider.\r\n\nUne
+    fois terminee, quitter la scene par le tunnel du d\xE9part.\r\n\nLa lumiere vous
+    guidera.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f0448d8796d2244f99b0064d742bdbe, type: 2}
   m_sharedMaterial: {fileID: -8228124026568669673, guid: 3f0448d8796d2244f99b0064d742bdbe,
@@ -3699,7 +3699,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mourrir en VR
+  m_text: 'Mourir en VR
 
 '
   m_isRightToLeft: 0
