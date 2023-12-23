@@ -9,11 +9,21 @@ public class GestionFin : MonoBehaviour
 
     private GearPuzzle gearPuzzle;
     private ColorPuzzle colorPuzzle;
+    private GameManager gameManager;
 
     private void Start()
     {
         gearPuzzle = FindObjectOfType<GearPuzzle>();
         colorPuzzle = FindObjectOfType<ColorPuzzle>();
+        gameManager = FindObjectOfType<GameManager>();
+
+
+        gearPuzzle.PuzzleGearEnable = true;
+        colorPuzzle.PuzzleColorEnable = true;
+    }
+    private void Update()
+    {
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,6 +41,7 @@ public class GestionFin : MonoBehaviour
             // début de la partie on s'assure que seulement celui-ci call le changement
             if (currentLobby.HostId == AuthenticationService.Instance.PlayerId)
             {
+                gameManager.PlayerPref();
                 //On verrouille le Lobby pour les autres joueurs
                 LobbyManager.Instance.LockLobby();
                 // Si oui on call la méthode pour changer de scène
@@ -39,11 +50,6 @@ public class GestionFin : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-
-
-    }
 
     public void SetReady(bool isReady)
     {
