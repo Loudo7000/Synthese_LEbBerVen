@@ -25,6 +25,7 @@ public class ColorPuzzle : NetworkBehaviour
 
     private bool _puzzleColorEnable = false;
 
+    public bool PuzzleColorEnable { get => _puzzleColorEnable; set => _puzzleColorEnable = value; }
 
     void Start()
     {
@@ -149,14 +150,14 @@ public class ColorPuzzle : NetworkBehaviour
     [ClientRpc]
     private void CheckArrayClientRpc()
     {
-        if (!_puzzleColorEnable)
+        if (!PuzzleColorEnable)
         {
             _nbBtnPush++;
             if (_nbBtnPush == 4)
             {
                 if (_intRandomTab.SequenceEqual(_intTab))
                 {
-                    _puzzleColorEnable = true;
+                    PuzzleColorEnable = true;
                     _puzzleColorTitle.text = "Combinaison Valide !";
                 }
                 _nbBtnPush = 0;

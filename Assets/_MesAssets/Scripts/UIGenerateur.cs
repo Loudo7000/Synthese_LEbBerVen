@@ -13,6 +13,8 @@ public class UIGenerateur : NetworkBehaviour
     [SerializeField] private TMP_Text _txtGas = default;
     [SerializeField] private GameObject _btnGenerateur = default;
     [SerializeField] private Slider _sliderGas = default;
+    [SerializeField] private AudioSource _sonGenerateur;
+
 
     private Generateur _generateur;
     private NetworkVariable<bool> _allumer = new NetworkVariable<bool>(false);
@@ -27,7 +29,7 @@ public class UIGenerateur : NetworkBehaviour
     [ClientRpc]
     public void ChangerEtatWrenchClientRpc()
     {
-        _txtGenerateur.text = "État : Réparer";
+        _txtGenerateur.text = "ï¿½tat : Rï¿½parer";
         _txtGenerateur.color = Color.green;
     }
 
@@ -60,6 +62,7 @@ public class UIGenerateur : NetworkBehaviour
         {
             _btnGenerateur.GetComponent<Image>().color = Color.green;
             _allumer.Value = true;
+            _sonGenerateur.Play();
         }
     }
 }

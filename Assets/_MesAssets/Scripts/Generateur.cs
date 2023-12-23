@@ -10,6 +10,9 @@ public class Generateur : NetworkBehaviour
 {
 
     [SerializeField] private int _nbCoupsWrench;
+    [SerializeField] private AudioSource _sonWrench;
+    [SerializeField] private AudioSource _sonGas;
+
 
     private NetworkVariable<int> _nbCoup = new NetworkVariable<int>();
     private NetworkVariable<int> _qteGas = new NetworkVariable<int>();
@@ -28,6 +31,7 @@ public class Generateur : NetworkBehaviour
         if (collision.collider.CompareTag("Wrench"))
         {
             _nbCoup.Value++;
+            _sonWrench.Play();
         }
 
         if (_nbCoup.Value == _nbCoupsWrench)
@@ -40,6 +44,11 @@ public class Generateur : NetworkBehaviour
     {
         if(other.tag == ("Gas"))
         {
+            if (_qteGas < 20)
+            {
+                _sonGas.Play();
+            }
+
             _sortie = false;
             StartCoroutine(CompteurGasCoroutine());
         }
@@ -50,6 +59,7 @@ public class Generateur : NetworkBehaviour
     {
         if (other.tag == ("Gas"))
         {
+            _sonGas.Stop();
             _sortie = true;
             StopAllCoroutines();
         }
@@ -73,6 +83,7 @@ public class Generateur : NetworkBehaviour
         if (_sortie)
         {
             StopAllCoroutines();
+            _sonGas.Stop();
         }
         else
         {

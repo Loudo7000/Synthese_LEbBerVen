@@ -2087,7 +2087,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mourrir en VR
+  m_text: 'Mourir en VR
 
 '
   m_isRightToLeft: 0
@@ -2960,7 +2960,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &819882849
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9381,11 +9381,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4051723493368525192, guid: a50270a61f78a5b4aa71215abb1a7345,
-        type: 3}
-      propertyPath: m_text
-      value: Dave Lacourse
       objectReference: {fileID: 0}
     - target: {fileID: 5369762966345371940, guid: a50270a61f78a5b4aa71215abb1a7345,
         type: 3}
