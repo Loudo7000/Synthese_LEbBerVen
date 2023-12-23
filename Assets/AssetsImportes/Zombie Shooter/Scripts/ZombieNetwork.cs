@@ -67,7 +67,7 @@ public class ZombieNetwork : NetworkBehaviour  //change l'héritage pour le beha
             {
                 if (Vector3.Distance(player.transform.position, transform.position) < 1f)
                 {
-                    NetworkSceneTransition.Instance.ChargerScenePourTous("Zombie Fin");
+                    NetworkSceneTransition.Instance.ChargerScenePourTous("LobbyFin");
                 }
             }
 

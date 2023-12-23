@@ -18,8 +18,6 @@ public class UIFinJeu : MonoBehaviour
     void Start()
     {
 
-        Debug.Log(PlayerPrefs.GetFloat("TempsPartie"));
-        Debug.Log(PlayerPrefs.GetFloat("MeilleurTemps"));
 
         _temps = PlayerPrefs.GetFloat("TempsPartie");
 
