@@ -23,9 +23,9 @@ public class ColorPuzzle : NetworkBehaviour
     private int[]  _intTab = new int[4];
     private int _nbBtnPush = 0;
 
-    private bool _puzzleColorEnable = false;
+    private NetworkVariable<bool> _puzzleColorEnable = new NetworkVariable<bool>(false);
 
-    public bool PuzzleColorEnable { get => _puzzleColorEnable; set => _puzzleColorEnable = value; }
+    public bool PuzzleColorEnable { get => _puzzleColorEnable.Value; set => _puzzleColorEnable.Value = value; }
 
     void Start()
     {
@@ -56,16 +56,20 @@ public class ColorPuzzle : NetworkBehaviour
             {
                 case 0:
                     _image[i].GetComponent<Image>().color = _color0.Value;
+                Debug.Log(_image[i].GetComponent<Image>().color);
                     break;
                 case 1:
                     _image[i].GetComponent<Image>().color = _color1.Value;
-                    break;
+                Debug.Log(_image[i].GetComponent<Image>().color);
+                break;
                 case 2:
                     _image[i].GetComponent<Image>().color = _color2.Value;
-                    break;
+                Debug.Log(_image[i].GetComponent<Image>().color);
+                break;
                 case 3:
                     _image[i].GetComponent<Image>().color = _color3.Value;
-                    break;
+                Debug.Log(_image[i].GetComponent<Image>().color);
+                break;
 
             }
         
@@ -157,7 +161,7 @@ public class ColorPuzzle : NetworkBehaviour
             {
                 if (_intRandomTab.SequenceEqual(_intTab))
                 {
-                    PuzzleColorEnable = true;
+                    _puzzleColorEnable.Value = true;
                     _puzzleColorTitle.text = "Combinaison Valide !";
                 }
                 _nbBtnPush = 0;

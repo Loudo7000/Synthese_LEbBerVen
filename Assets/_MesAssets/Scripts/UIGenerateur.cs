@@ -29,7 +29,7 @@ public class UIGenerateur : NetworkBehaviour
     [ClientRpc]
     public void ChangerEtatWrenchClientRpc()
     {
-        _txtGenerateur.text = "�tat : R�parer";
+        _txtGenerateur.text = "État : Réparer";
         _txtGenerateur.color = Color.green;
     }
 

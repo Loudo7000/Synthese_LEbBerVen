@@ -21,7 +21,7 @@ public class UIFinJeu : MonoBehaviour
 
         _temps = PlayerPrefs.GetFloat("TempsPartie");
 
-        if (_temps < PlayerPrefs.GetFloat("MeilleurTemps", 0))
+        if (_temps < PlayerPrefs.GetFloat("MeilleurTemps", 10000))
         {
             PlayerPrefs.SetFloat("MeilleurTemps", _temps);
         }

@@ -44,7 +44,7 @@ public class Generateur : NetworkBehaviour
     {
         if(other.tag == ("Gas"))
         {
-            if (_qteGas < 20)
+            if (_qteGas.Value < 20)
             {
                 _sonGas.Play();
             }
