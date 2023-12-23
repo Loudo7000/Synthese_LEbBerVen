@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class Generateur : MonoBehaviour
+public class Generateur : NetworkBehaviour
 {
 
     [SerializeField] private int _nbCoupsWrench;
@@ -13,13 +14,13 @@ public class Generateur : MonoBehaviour
     [SerializeField] private AudioSource _sonGas;
 
 
-    private int _nbCoup;
-    private int _qteGas;
+    private NetworkVariable<int> _nbCoup = new NetworkVariable<int>();
+    private NetworkVariable<int> _qteGas = new NetworkVariable<int>();
     private bool _sortie = false;
     private UIGenerateur _etat;
 
-    public int NbCoup { get => _nbCoup; set => _nbCoup = value; }
-    public int QteGas { get => _qteGas; set => _qteGas = value; }
+    public int NbCoup { get => _nbCoup.Value;}
+    public int QteGas { get => _qteGas.Value; }
 
     private void Start()
     {
@@ -29,13 +30,13 @@ public class Generateur : MonoBehaviour
     {
         if (collision.collider.CompareTag("Wrench"))
         {
-            _nbCoup++;
+            _nbCoup.Value++;
             _sonWrench.Play();
         }
 
-        if (_nbCoup == _nbCoupsWrench)
+        if (_nbCoup.Value == _nbCoupsWrench)
         {
-            _etat.ChangerEtatWrench();
+            _etat.ChangerEtatWrenchClientRpc();
         }
     }
 
@@ -66,14 +67,14 @@ public class Generateur : MonoBehaviour
 
     IEnumerator CompteurGasCoroutine()
     {
-        if (_qteGas < 20)
+        if (_qteGas.Value < 20)
         {
             yield return new WaitForSeconds(2);
             AugmenterQteGas();
         }
-        else if (_qteGas >= 20)
+        else if (_qteGas.Value == 20)
         {
-            _etat.ChangerEtatGas();
+            _etat.ChangerEtatGasClientRpc();
         }
     }
 
@@ -86,8 +87,8 @@ public class Generateur : MonoBehaviour
         }
         else
         {
-            _qteGas += 2;
-            _etat.AugmenterGas(_qteGas);
+            _qteGas.Value += 2;
+            _etat.AugmenterGasClientRpc(_qteGas.Value);
             StartCoroutine(CompteurGasCoroutine());
         }
     }
