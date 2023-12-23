@@ -23,9 +23,9 @@ public class ColorPuzzle : NetworkBehaviour
     private int[]  _intTab = new int[4];
     private int _nbBtnPush = 0;
 
-    private NetworkVariable<bool> _puzzleColorEnable = new NetworkVariable<bool>(false);
+    private bool _puzzleColorEnable = false;
 
-    public bool PuzzleColorEnable { get => _puzzleColorEnable.Value; set => _puzzleColorEnable.Value = value; }
+    public bool PuzzleColorEnable { get => _puzzleColorEnable; set => _puzzleColorEnable = value; }
 
     void Start()
     {
@@ -161,7 +161,7 @@ public class ColorPuzzle : NetworkBehaviour
             {
                 if (_intRandomTab.SequenceEqual(_intTab))
                 {
-                    _puzzleColorEnable.Value = true;
+                    _puzzleColorEnable = true;
                     _puzzleColorTitle.text = "Combinaison Valide !";
                 }
                 _nbBtnPush = 0;

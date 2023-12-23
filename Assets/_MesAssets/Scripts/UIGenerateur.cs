@@ -17,9 +17,9 @@ public class UIGenerateur : NetworkBehaviour
 
 
     private Generateur _generateur;
-    private NetworkVariable<bool> _allumer = new NetworkVariable<bool>(false);
+    private bool _allumer = false;
 
-    public bool Allumer { get => _allumer.Value; }
+    public bool Allumer { get => _allumer; }
 
     private void Start()
     {
@@ -61,7 +61,7 @@ public class UIGenerateur : NetworkBehaviour
         if (_generateur.NbCoup >= 3 && _generateur.QteGas >= 20)
         {
             _btnGenerateur.GetComponent<Image>().color = Color.green;
-            _allumer.Value = true;
+            _allumer = true;
             _sonGenerateur.Play();
         }
     }

@@ -30,7 +30,7 @@ public class Generateur : NetworkBehaviour
     {
         if (collision.collider.CompareTag("Wrench"))
         {
-            _nbCoup.Value++;
+            CoupWrenchClientRpc();
             _sonWrench.Play();
         }
 
@@ -38,6 +38,12 @@ public class Generateur : NetworkBehaviour
         {
             _etat.ChangerEtatWrenchClientRpc();
         }
+    }
+
+    [ClientRpc]
+    private void CoupWrenchClientRpc()
+    {
+        _nbCoup.Value++;
     }
 
     private void OnTriggerEnter(Collider other)
