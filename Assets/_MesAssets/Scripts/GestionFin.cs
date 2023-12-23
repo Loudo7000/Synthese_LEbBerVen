@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GestionFin : MonoBehaviour
 {
-
+    [SerializeField] private bool _skipPuzzle = false;
     private GearPuzzle gearPuzzle;
     private ColorPuzzle colorPuzzle;
     private GameManager gameManager;
@@ -17,9 +17,12 @@ public class GestionFin : MonoBehaviour
         colorPuzzle = FindObjectOfType<ColorPuzzle>();
         gameManager = FindObjectOfType<GameManager>();
 
+        if (_skipPuzzle)
+        {
+            gearPuzzle.PuzzleGearEnable = true;
+            colorPuzzle.PuzzleColorEnable = true;
+        }
 
-        gearPuzzle.PuzzleGearEnable = true;
-        colorPuzzle.PuzzleColorEnable = true;
     }
     private void Update()
     {
