@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
-public class PorteCabane : MonoBehaviour
+public class PorteCabane : NetworkBehaviour
 {
 
     [SerializeField] private GameObject _openDoor = default;
@@ -15,8 +16,14 @@ public class PorteCabane : MonoBehaviour
         _openDoor.gameObject.SetActive(false);
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void doorServerRpc()
+    {
+        doorClientRpc();
+    }
 
-    public void door()
+    [ClientRpc]
+    private void doorClientRpc()
     {
         _doorState = !_doorState;
 
